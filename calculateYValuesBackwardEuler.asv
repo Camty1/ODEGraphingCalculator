@@ -1,0 +1,11 @@
+function [y1, y2] = calculateYValuesBackwardEuler(prevX,prevY1, prevY2, stepSize)
+%calculateYValuesBackwardEuler Uses backward Euler Method to calculate y1
+%and y2.
+%   Backward Euler Method is y_{i+1} = y_{i} + h * y^{\prime}(x_{i+1}, y_{i+i})
+%   y_{i+1} can be solved for algebraically with both ode's, only needing 
+%
+    x = prevX + stepSize;
+    y1 = (prevY1 + stepSize * (2 - exp(-4*x)))/(1+2 * stepSize);
+    y2 = (prevY2 + stepSize * exp(x/2)*(5*cos(5*x) - 1/2 * sin(5*x)))/(1 + stepSize);
+end
+
